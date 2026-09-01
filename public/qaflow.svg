@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">QAFlow mark</title>
+  <rect width="128" height="128" rx="24" fill="#020617"/>
+  <path d="M32 68c0-19.882 16.118-36 36-36h28v18H68c-9.941 0-18 8.059-18 18s8.059 18 18 18h7V72h-9V54h27v50H68c-19.882 0-36-16.118-36-36Z" fill="#38bdf8"/>
+  <path d="M31 99 52 78l13 13-21 21H31V99Z" fill="#34d399"/>
+</svg>

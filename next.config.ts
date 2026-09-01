@@ -1,0 +1,9 @@
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  allowedDevOrigins: ["127.0.0.1", "127.0.0.1:3100", "localhost", "localhost:3100"],
+  output: "standalone",
+  poweredByHeader: false,
+};
+
+export default nextConfig;
