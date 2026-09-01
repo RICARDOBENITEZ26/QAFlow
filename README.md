@@ -10,9 +10,9 @@ The goal is to build a recruiter-ready SaaS portfolio project that demonstrates 
 
 ## Current Status
 
-Milestone 1: Project Foundation.
+Milestone 2: Authentication & Authorization foundation.
 
-This repository currently contains the engineering foundation only. Authentication, organizations, projects, test management workflows, dashboards, billing, and AI features are intentionally out of scope for this milestone.
+This repository currently contains the engineering foundation and the first authentication foundation. Full RBAC, organizations, projects, test management workflows, dashboards, billing, and AI features are intentionally out of scope for this stage.
 
 ## Tech Stack
 
@@ -22,6 +22,7 @@ This repository currently contains the engineering foundation only. Authenticati
 - Tailwind CSS 4
 - PostgreSQL
 - Prisma 7
+- Auth.js / NextAuth beta
 - Zod
 - Vitest
 - React Testing Library
@@ -35,6 +36,8 @@ This repository currently contains the engineering foundation only. Authenticati
 
 - Temporary responsive QAFlow foundation page.
 - Health endpoint at `/api/health`.
+- Auth.js route handler at `/api/auth/[...nextauth]`.
+- Protected session endpoint at `/api/me`.
 - TypeScript strict mode.
 - Centralized application error foundation.
 - Safe logging abstraction with sensitive-key redaction.
@@ -83,7 +86,10 @@ Use `.env.example` as the template. Real `.env` files are ignored by Git.
 
 - `DATABASE_URL`: PostgreSQL connection URL.
 - `DIRECT_URL`: direct PostgreSQL connection URL for Prisma workflows.
-- `AUTH_SECRET`: placeholder for the future Auth.js milestone.
+- `AUTH_SECRET`: Auth.js secret. Generate a real value outside Git.
+- `AUTH_TRUST_HOST`: allow Auth.js to trust forwarded host headers in supported deployments.
+- `AUTH_GITHUB_ID`: optional GitHub OAuth client ID.
+- `AUTH_GITHUB_SECRET`: optional GitHub OAuth client secret.
 - `NEXT_PUBLIC_APP_URL`: public application URL.
 
 ## PostgreSQL and Docker
@@ -153,6 +159,10 @@ npm run test:e2e
 
 Prisma 7 generates the client into `src/generated/prisma` and reads CLI datasource configuration from `prisma.config.ts`.
 
+## Authentication
+
+Auth.js is configured with the Prisma adapter and optional GitHub OAuth provider settings. If GitHub credentials are not present, no OAuth provider is enabled. Protected server-side code should use `requireAuthenticatedSession()` and return only minimal DTOs to clients.
+
 ## CI/CD
 
 GitHub Actions runs formatting, linting, type checking, unit tests, build, and Playwright E2E tests on pull requests and pushes to `main` or `develop`.
@@ -167,7 +177,7 @@ GitHub Actions runs formatting, linting, type checking, unit tests, build, and P
 ## Roadmap
 
 1. Project Foundation
-2. Authentication and Authorization
+2. Authentication and Authorization foundation
 3. Organizations and Projects
 4. Requirements, Test Suites, and Test Cases
 5. Test Runs, Bugs, and Evidence

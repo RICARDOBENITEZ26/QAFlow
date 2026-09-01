@@ -1,5 +1,16 @@
 # Auth Foundation
 
-Authentication is intentionally not implemented in Milestone 1.
+Milestone 2 starts the Auth.js foundation for QAFlow.
 
-This directory is reserved for the Auth.js integration planned for Milestone 2.
+Current scope:
+
+- Auth.js configuration for the Next.js App Router.
+- Prisma adapter integration.
+- Optional GitHub OAuth provider configuration through environment variables.
+- Server-side session helper for protected handlers.
+
+Out of scope for this foundation:
+
+- Full RBAC policies.
+- Organizations and project membership.
+- Product QA modules.

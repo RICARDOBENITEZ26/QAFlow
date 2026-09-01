@@ -2,11 +2,11 @@
 
 ## Supported Status
 
-QAFlow is currently in Milestone 1: Project Foundation. It is not production software yet.
+QAFlow is currently in Milestone 2: Authentication & Authorization foundation. It is not production software yet.
 
 ## Dependency Security Notes
 
-### Prisma CLI Transitive Advisory
+### Prisma CLI Transitive Advisories
 
 - Date reviewed: 2026-09-01
 - Advisory: GHSA-ggr8-5vv4-36mx
@@ -16,9 +16,16 @@ QAFlow is currently in Milestone 1: Project Foundation. It is not production sof
 - Dependency scope: development/tooling CLI
 - Runtime package retained: `@prisma/client@7.10.0`
 
-`npm audit` and `npm audit --omit=dev` currently report this advisory because `@prisma/client` declares `prisma` as a peer dependency and npm keeps the CLI package in the installed dependency graph.
+- Advisory: GHSA-3f6p-5ww8-9rcr
+- Affected transitive package: `mysql2 <3.22.0`
+- Package path: `prisma -> mysql2`
+- Root package in this repository: `prisma@7.10.0`
+- Dependency scope: development/tooling CLI
+- QAFlow database runtime: PostgreSQL through `pg` and `@prisma/adapter-pg`, not MySQL
 
-The known fix suggested by npm requires `npm audit fix --force`, which downgrades `prisma` to `6.12.0`. This is a breaking downgrade for the current Prisma 7 configuration and would invalidate the adopted Prisma 7 setup.
+`npm audit` and `npm audit --omit=dev` currently report these advisories because npm keeps the Prisma CLI package in the installed dependency graph.
+
+The known fix suggested by npm requires `npm audit fix --force`, which downgrades `prisma` to `6.19.3`. This is a breaking downgrade for the current Prisma 7 configuration and would invalidate the adopted Prisma 7 setup.
 
 ## Current Mitigation
 

@@ -12,10 +12,15 @@
 
 ## Current Milestone
 
-Milestone 1 adds secret-safe environment examples, typed errors, safe logging, CodeQL, and Dependabot.
+Milestone 2 starts the Auth.js foundation while preserving secret-safe environment examples, typed errors, safe logging, CodeQL, and Dependabot.
 
 ## Known Dependency Advisory
 
-As of 2026-09-01, `npm audit` reports GHSA-ggr8-5vv4-36mx for `deepmerge-ts <8.0.0` through `prisma -> @prisma/config`.
+As of 2026-09-01, `npm audit` reports:
 
-This is currently tracked as a Prisma CLI/tooling transitive advisory. `npm audit fix --force` proposes a breaking downgrade to Prisma 6.12.0, so the project does not apply it. The mitigation is to keep Dependabot enabled and update `prisma` and `@prisma/client` together when a compatible patched Prisma 7 release is available.
+- GHSA-ggr8-5vv4-36mx for `deepmerge-ts <8.0.0` through `prisma -> @prisma/config`.
+- GHSA-3f6p-5ww8-9rcr for `mysql2 <3.22.0` through `prisma -> mysql2`.
+
+These are currently tracked as Prisma CLI/tooling transitive advisories. QAFlow uses PostgreSQL at runtime through `pg` and `@prisma/adapter-pg`; it does not use MySQL runtime connections.
+
+`npm audit fix --force` proposes a breaking downgrade to Prisma 6.19.3, so the project does not apply it. The mitigation is to keep Dependabot enabled and update `prisma` and `@prisma/client` together when a compatible patched Prisma 7 release is available.

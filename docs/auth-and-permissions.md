@@ -1,6 +1,16 @@
 # Authentication and Permissions
 
-Authentication is planned for Milestone 2 with Auth.js.
+Authentication starts in Milestone 2 with Auth.js.
+
+## Current Authentication Foundation
+
+- Auth.js is configured for the Next.js App Router.
+- Prisma stores users, accounts, sessions, and verification tokens.
+- GitHub OAuth can be enabled through environment variables.
+- Server-side handlers can call `requireAuthenticatedSession()` to reject unauthenticated requests.
+- `/api/me` is a protected foundation endpoint that returns a minimal authenticated user DTO.
+
+Full RBAC is not implemented yet.
 
 ## Foundation Rules
 
